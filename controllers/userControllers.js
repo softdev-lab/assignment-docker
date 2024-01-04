@@ -48,6 +48,7 @@ const getUser = async (req, res, next) => {
 
 const getUsers = async (req, res, next) => {
     try {
+        console.log(req);
         const Users = await User.find();
         res.status(200).json(Users);
     } catch (err) {

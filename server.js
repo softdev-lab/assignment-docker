@@ -17,7 +17,7 @@ app.use(cors());
 app.use("/api/users",require('./routes/userRoutes'));
 
 connectDb();
- /*
+ 
 app.listen(process.env.PORT, () => {
     console.log(`server running on port ${process.env.PORT}`);
-})*/
+})
