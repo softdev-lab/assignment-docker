@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  db-dev:
+    container_name: db-dev
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sdpdocker
+      MONGO_INITDB_ROOT_PASSWORD: 123456docker
+    ports:
+      - 27017:27017
+    volumes:
+      - db-dev:/data/db
+  
+  api-dev:
+    container_name: api-dev
+    build: .
+    restart: always
+    ports:
+      - '8081:5000'
+    image: api
+
+  db-test:
+    container_name: db-test
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sdpdocker
+      MONGO_INITDB_ROOT_PASSWORD: 123456docker
+    ports:
+      - 27018:27017
+    volumes:
+      - db-test:/data/db
+  
+  api-test:
+    container_name: api-test
+    build: .
+    restart: always
+    ports:
+      - '8082:5000'
+    image: api
+
+volumes:
+  db-dev:
+  db-test:
